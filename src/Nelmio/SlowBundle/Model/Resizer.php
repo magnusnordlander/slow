@@ -17,16 +17,31 @@ class Resizer
         $this->imagine = $imagine;
     }
 
-    public function getData()
+    public function getImageData()
     {
-        $size = new Box(40, 40);
-        $image = $this->imagine->open($this->file)->thumbnail($size, ImageInterface::THUMBNAIL_INSET);
+        $width = 40;
+        $height = 40;
+        $thumbnail_type = ImageInterface::THUMBNAIL_INSET
+        $cache_key = 'resizer-'.$width.'-'.$height.'-'.$thumbnail_type.'-'.$this->file.'-'.filemtime($this->file);
 
-        return '<img src="data:image/png;base64,'.base64_encode($image->get('png')).'" />';
+        if (!apc_exists($cache_key))
+        {
+            $size = new Box($width, $height);
+            $image = $this->imagine->open($this->file)->thumbnail($size, $thumbnail_type);
+            $base_64 = base64_encode($image->get('png'));
+            apc_store($cache_key, $base_64);
+
+            return $base_64;
+        }
+        else
+        {
+            return apc_fetch($cache_key);
+        }
+
     }
 
-    private function multiply($result, $n)
+    public function getData()
     {
-        return $result * $n;
+        return '<img src="data:image/png;base64,'.$this->getImageData().'" />';
     }
 }
