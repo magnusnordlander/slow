@@ -13,10 +13,7 @@ class Cracker
 
     public function getData()
     {
-        file_put_contents($this->file, '0');
-        for ($i = 0; $i < 400; $i++) {
-            file_put_contents($this->file, file_get_contents($this->file) + 1);
-        }
-        return file_get_contents($this->file);
+        file_put_contents($this->file, '400');
+        return 400;
     }
 }
