@@ -6,18 +6,27 @@ class Bob
 {
     protected $data;
     protected $int;
+    protected $cache_key;
 
     public function __construct($int)
     {
         $this->int = $int;
-        //$this->data = $this->factorial($int);
+        $this->cache_key = 'bob-'.$int;
     }
 
     public function getData()
     {
         if (!$this->data)
         {
-            $this->data = $this->factorial($this->int);
+            if (apc_exists($this->cache_key))
+            {
+                $this->data = apc_fetch($this->cache_key);
+            }
+            else
+            {
+                $this->data = $this->factorial($this->int);
+                apc_store($this->cache_key, $this->data);
+            }
         }
         return $this->data;
     }
