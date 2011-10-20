@@ -5,14 +5,20 @@ namespace Nelmio\SlowBundle\Model;
 class Bob
 {
     protected $data;
+    protected $int;
 
     public function __construct($int)
     {
-        $this->data = $this->factorial($int);
+        $this->int = $int;
+        //$this->data = $this->factorial($int);
     }
 
     public function getData()
     {
+        if (!$this->data)
+        {
+            $this->data = $this->factorial($this->int);
+        }
         return $this->data;
     }
 
