@@ -4,7 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>{% block title %}Slow Demo App{% endblock %}</title>
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
-        {% stylesheets 'bundles/nelmioslow/css/reset.css' 'bundles/nelmioslow/css/main.css' 'bundles/nelmioslow/css/print.css' filter='?yui_css,cssrewrite' output="build/css/home.css" -%}
+        {% stylesheets '@css_home' output="build/css/home.css" -%}
         <link type="text/css" href="{{ asset_url }}" rel="stylesheet" />
         {%- endstylesheets %}
         {% block stylesheets %}{% endblock %}

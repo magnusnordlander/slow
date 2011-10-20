@@ -33,6 +33,15 @@ assetic:
             jar: /home/php/yuicompressor-2.4.6/build/yuicompressor-2.4.6.jar
         yui_js:
             jar: /home/php/yuicompressor-2.4.6/build/yuicompressor-2.4.6.jar
+    assets:
+        home_css:
+            inputs:
+                - bundles/nelmioslow/css/reset.css
+                - bundles/nelmioslow/css/main.css
+                - bundles/nelmioslow/css/print.css
+            filters: 
+                - ?yui_css
+                - cssrewrite                
 
 # Doctrine Configuration
 doctrine:
