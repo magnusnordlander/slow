@@ -5,12 +5,14 @@ namespace Nelmio\SlowBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 
 class DefaultController extends Controller
 {
     /**
      * @Route("/", name="home")
      * @Template()
+     * @Cache(smaxage="300")
      */
     public function indexAction()
     {
@@ -20,6 +22,7 @@ class DefaultController extends Controller
     /**
      * @Route("/noop/", name="noop")
      * @Template()
+     * @Cache(smaxage="300")
      */
     public function noopAction()
     {
@@ -29,6 +32,7 @@ class DefaultController extends Controller
     /**
      * @Route("/all/", name="all")
      * @Template()
+     * @Cache(smaxage="300")
      */
     public function slowAllAction()
     {

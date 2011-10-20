@@ -26,6 +26,7 @@ class RunController extends Controller
     /**
      * @Route("/bob/", name="bob")
      * @Template("NelmioSlowBundle:Run:single.html.twig")
+     * @Cache(smaxage="300")
      */
     public function bobAction($layout = true)
     {
@@ -41,6 +42,7 @@ class RunController extends Controller
     /**
      * @Route("/tree-builder/", name="tree_builder")
      * @Template()
+     * @Cache(smaxage="300")
      */
     public function treeBuilderAction($layout = true)
     {
@@ -56,6 +58,7 @@ class RunController extends Controller
     /**
      * @Route("/sleepyhead/", name="sleepyhead")
      * @Template("NelmioSlowBundle:Run:single.html.twig")
+     * @Cache(smaxage="300")
      */
     public function sleepyheadAction($layout = true)
     {
@@ -71,6 +74,7 @@ class RunController extends Controller
     /**
      * @Route("/resizer/", name="resizer")
      * @Template("NelmioSlowBundle:Run:single.html.twig")
+     * @Cache(smaxage="300")     
      */
     public function resizerAction($layout = true)
     {
