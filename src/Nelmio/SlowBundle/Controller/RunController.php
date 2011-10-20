@@ -27,7 +27,6 @@ class RunController extends Controller
     /**
      * @Route("/bob/", name="bob")
      * @Template("NelmioSlowBundle:Run:single.html.twig")
-     * @Cache(smaxage="300")
      */
     public function bobAction($layout = true)
     {
