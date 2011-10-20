@@ -21,7 +21,7 @@ class Resizer
     {
         $width = 40;
         $height = 40;
-        $thumbnail_type = ImageInterface::THUMBNAIL_INSET
+        $thumbnail_type = ImageInterface::THUMBNAIL_INSET;
         $cache_key = 'resizer-'.$width.'-'.$height.'-'.$thumbnail_type.'-'.$this->file.'-'.filemtime($this->file);
 
         if (!apc_exists($cache_key))
