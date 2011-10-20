@@ -15,7 +15,7 @@ class TreeBuilder
     {
         return $this->em->getRepository('NelmioSlowBundle:Tree')
             ->createQueryBuilder('t')
-            ->join('t.children c')
+//            ->join('t.children c')
             ->where('t.parent IS NULL')
             ->getQuery()->getResult();
     }
