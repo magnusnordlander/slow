@@ -1,9 +1,9 @@
 <?php
 
-use Symfony\Component\ClassLoader\UniversalClassLoader;
+use Symfony\Component\ClassLoader\ApcUniversalClassLoader;
 use Doctrine\Common\Annotations\AnnotationRegistry;
 
-$loader = new UniversalClassLoader();
+$loader = new ApcUniversalClassLoader('slow-autoload-');
 $loader->registerNamespaces(array(
     'Symfony'          => array(__DIR__.'/../vendor/symfony/src', __DIR__.'/../vendor/bundles'),
     'Sensio'           => __DIR__.'/../vendor/bundles',
